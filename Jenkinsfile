@@ -4,11 +4,25 @@ pipeline
 
     stages 
 	{
-        stage('Hello') 
+        stage('Build') 
 		{
             steps 
 			{
-                echo 'Hello World'
+                echo 'Build App'
+            }
+        }
+		 stage('Test') 
+		{
+            steps 
+			{
+                echo 'Test App'
+            }
+        }	
+		stage('Deploy App') 
+		{
+            steps 
+			{
+                echo 'Deploy App'
             }
         }
     }
