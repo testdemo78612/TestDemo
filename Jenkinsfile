@@ -8,21 +8,21 @@ pipeline
 		{
             steps 
 			{
-                echo 'Build Application'
+                echo 'Build App'
             }
         }
 		 stage('Test') 
 		{
             steps 
 			{
-                echo 'Test Application'
+                echo 'Test App'
             }
         }	
 		stage('Deploy App') 
 		{
             steps 
 			{
-                echo 'Deploy Application'
+                echo 'Deploy App'
             }
         }
     }
