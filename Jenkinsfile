@@ -1,89 +1,29 @@
-pipeline {
-
+pipeline 
+{
     agent any
 
-    parameters {
-
-        string(name: 'Branch', defaultValue: 'master', description: 'Branch to checkout')
-
-        choice(name: 'BuildType', choices: ['debug', 'release', 'test'], description: 'Build types')
-
+    stages 
+	{
+        stage('Build') 
+		{
+            steps 
+			{
+                echo 'Build App'
+            }
+        }
+		stage('Test') 
+		{
+            steps 
+			{
+                echo 'Test App'
+            } 
+        }	
+		stage('Deploy App') 
+		{
+            steps 
+			{
+                echo 'Deploy App'
+            }
+        }
     }
-
-    stages {
-
-        stage('Git checkout') {
-
-        steps {
-
-             script {
-
-                    def Branch = params.Branch
-
-                    //git([credentialsId: '70832129-0fa4-4477-8056-19e7d00488cd', url: 'https://gitlab.com/jayakumar/jenkins-project.git', branch : Branch])
-
-             }
-
-            }
-
-        }
-
-        stage('build') {
-
-            steps {
-
-                echo "Branch value: ${params.Branch}"
-
-                echo "BuildType value: ${params.BuildType}"
-
-                script {
-
-                    // Set JAVA_HOME environment variable
-
-                    withEnv(["JAVA_HOME=/snap/android-studio/126/android-studio/jbr/", "ANDROID_HOME=/home/jinu/Android/Sdk"]) {
-
-                        // Your pipeline steps go here
-
-                        // The JAVA_HOME variable will be available within this block
-
-                        def Branch = params.Branch
-
-                        def BuildType = params.BuildType
-
-                        if (BuildType == "debug") {
-
-                            sh "./gradlew assembleDebug"
-
-                        } else if (BuildType == "release") {
-
-                            sh "./gradlew assembleRelease"
-
-                        } else {
-
-                            sh "./gradlew test"
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
-
-        stage('Archive Artifacts') {
-
-            steps {
-
-                // Archive the artifacts
-
-                archiveArtifacts '**/*.apk'
-
-            }
-
-        }
-
-    }
-
 }
