@@ -26,37 +26,7 @@ pipeline {
 
  
 
-        stage('Git checkout') {
-
- 
-
-        steps {
-
- 
-
-             script {
-
- 
-
-                    def Branch = params.Branch
-
- 
-
-                    git([credentialsId: 'testdemo123', url: 'https://github.com/testdemo78612/TestDemo.git', branch : Branch])
-
- 
-
-             }
-
- 
-
-            }
-
- 
-
-        }
-
- 
+     
 
         stage('build') {
 
