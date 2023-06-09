@@ -24,6 +24,8 @@ pipeline {
 
     stages {
 
+ 
+
         stage('Git checkout') {
 
  
@@ -40,7 +42,7 @@ pipeline {
 
  
 
-                    git([credentialsId: 'testDemoCred', url: 'https://github.com/testdemo78612/TestDemo.git', branch : Branch])
+                    git([credentialsId: 'testdemo123', url: 'https://github.com/testdemo78612/TestDemo.git', branch : Branch])
 
  
 
